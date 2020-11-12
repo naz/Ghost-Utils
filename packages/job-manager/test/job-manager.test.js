@@ -58,13 +58,23 @@ describe('Job Manager', function () {
     });
 
     describe('Schedule Job', function () {
-        it('fails to run for invalid scheduling expression', function () {
+        it('fails to schedule for invalid scheduling expression', function () {
+            const jobManager = new JobManager(logging);
+
+            try {
+                jobManager.scheduleJob('invalid expression', 'jobName', {});
+            } catch (err) {
+                err.message.should.equal('Invalid schedule format');
+            }
+        });
+
+        it('fails to schedule for no job name', function () {
             const jobManager = new JobManager(logging);
 
             try {
                 jobManager.scheduleJob('invalid expression', () => {}, {});
             } catch (err) {
-                err.message.should.equal('Invalid schedule format');
+                err.message.should.equal('Name parameter should be present if job is a function');
             }
         });
     });
