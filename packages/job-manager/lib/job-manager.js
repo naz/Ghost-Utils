@@ -29,7 +29,6 @@ class JobManager {
     constructor(logging) {
         this.queue = fastq(this, worker, 1);
 
-        //
         this.bree = new Bree({
             root: false, // set this to `false` to prevent requiring a root directory of jobs
             hasSeconds: true, // precission is needed to avoid task ovelaps after immidiate execution
@@ -111,7 +110,7 @@ class JobManager {
      * @param {import('p-wait-for').Options} [options]
      */
     async shutdown(options) {
-        this.bree.stop();
+        await this.bree.stop();
 
         if (this.queue.idle()) {
             return;
