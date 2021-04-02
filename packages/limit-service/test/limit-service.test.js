@@ -2,8 +2,8 @@
 // const testUtils = require('./utils');
 require('./utils');
 
-const LimitService = require('../lib/limit-service');
-const {MaxLimit, FlagLimit} = require('../lib/limit');
+const LimitService = require('../cjs/limit-service');
+const {MaxLimit, FlagLimit} = require('../cjs/limit-service');
 
 describe('Limit Service', function () {
     describe('Lodash Template', function () {

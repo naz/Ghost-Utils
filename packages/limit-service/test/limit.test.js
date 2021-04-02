@@ -2,7 +2,7 @@
 // const testUtils = require('./utils');
 require('./utils');
 
-const {MaxLimit} = require('../lib/limit');
+const {MaxLimit} = require('../cjs/limit-service');
 
 describe('Limit Service', function () {
     describe('Max Limit', function () {

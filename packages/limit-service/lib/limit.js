@@ -1,10 +1,12 @@
-const errors = require('@tryghost/errors');
+import * as errors from '@tryghost/errors';
 
 // run in context allows us to change the templateSettings without causing havoc
-const _ = require('lodash').runInContext();
+import _ from 'lodash';
+
+_.runInContext();
 _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
 
-class Limit {
+export class Limit {
     constructor({name, error, helpLink, db}) {
         this.name = name;
         this.error = error;
@@ -27,7 +29,7 @@ class Limit {
     }
 }
 
-class MaxLimit extends Limit {
+export class MaxLimit extends Limit {
     /**
      *
      * @param {Object} options
@@ -110,7 +112,7 @@ class MaxLimit extends Limit {
     }
 }
 
-class FlagLimit extends Limit {
+export class FlagLimit extends Limit {
     constructor({name, config, helpLink, db}) {
         super({name, error: config.error || '', helpLink, db});
 
@@ -146,8 +148,3 @@ class FlagLimit extends Limit {
         return;
     }
 }
-
-module.exports = {
-    MaxLimit,
-    FlagLimit
-};

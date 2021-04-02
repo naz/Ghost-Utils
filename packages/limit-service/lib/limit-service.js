@@ -1,9 +1,9 @@
-const errors = require('@tryghost/errors');
-const {MaxLimit, FlagLimit} = require('./limit');
-const config = require('./config');
-const _ = require('lodash');
+import * as errors from '@tryghost/errors';
+import {MaxLimit, FlagLimit} from './limit';
+import config from './config';
+import _ from 'lodash';
 
-class LimitService {
+export class LimitService {
     constructor() {
         this.limits = {};
     }
@@ -74,5 +74,3 @@ class LimitService {
         await this.limits[limitName].errorIfWouldGoOverLimit();
     }
 }
-
-module.exports = LimitService;

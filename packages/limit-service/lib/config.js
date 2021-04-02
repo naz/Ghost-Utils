@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     members: {
         currentCountQuery: async (db) => {
             let result = await db.knex('members').count('id', {as: 'count'}).first();
